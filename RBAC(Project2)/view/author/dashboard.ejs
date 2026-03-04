@@ -1,0 +1,63 @@
+
+<div class="row mb-4">
+    <div class="col-md-12">
+        <div class="card p-4" >
+            <h5 style="color: aliceblue;"><u>Blog Statistics :</u></h5>
+            <p>Total Blogs: <strong><%= user.totalBlogs %></strong></p>
+            <p>Approved Blogs: <strong><%= user.approvedBlogs %></strong></p>
+            <p>Pending Blogs: <strong><%= user.pendingBlogs %></strong></p>
+        </div>
+    </div>
+</div>
+
+<div class="card p-4">
+    <h5 class="mb-3">My Blogs</h5>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Status</th>
+                <th>Approval</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+             <% if(blogs.length === 0){ %>
+        <tr>
+            <td colspan="4" class="text-center">
+                No blogs created yet.
+            </td>
+        </tr>
+    <% } %>
+    
+            <% blogs.forEach(blog => { %>
+                <tr>
+                    <td><%= blog.title %></td>
+
+                    <td>
+                        <% if(blog.isActive){ %>
+                            <span class="badge bg-success">Active</span>
+                        <% } else { %>
+                            <span class="badge bg-secondary">Inactive</span>
+                        <% } %>
+                    </td>
+
+                    <td>
+                        <% if(blog.isApproved){ %>
+                            <span class="badge bg-primary">Approved</span>
+                        <% } else { %>
+                            <span class="badge bg-warning">Pending</span>
+                        <% } %>
+                    </td>
+
+                    <td>
+                        <a href="/author/edit/<%= blog._id %>" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a href="/author/delete/<%= blog._id %>" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>

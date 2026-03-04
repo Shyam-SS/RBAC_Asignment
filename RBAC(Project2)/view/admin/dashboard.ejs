@@ -1,0 +1,77 @@
+
+
+<div class="row">
+
+  <!-- Users -->
+  <div class="col-md-3 mb-4">
+    <div class="card stats-card text-center p-4">
+      <i class="fa fa-users fa-2x text-primary"></i>
+      <h6 class="mt-2">Total Users</h6>
+      <div class="counter" data-target="<%= totalUsers %>">0</div>
+    </div>
+  </div>
+
+  <!-- Blogs -->
+  <div class="col-md-3 mb-4">
+    <div class="card stats-card text-center p-4">
+      <i class="fa fa-pen fa-2x text-success"></i>
+      <h6 class="mt-2">Total Blogs</h6>
+      <div class="counter" data-target="<%= totalBlogs %>">0</div>
+    </div>
+  </div>
+
+  <!-- Pending -->
+  <div class="col-md-3 mb-4">
+    <div class="card stats-card text-center p-4">
+      <i class="fa fa-clock fa-2x text-warning"></i>
+      <h6 class="mt-2">Pending Approval</h6>
+      <div class="counter" data-target="<%= pendingBlogs %>">0</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Charts -->
+<div class="row mt-4">
+  <div class="col-md-8">
+    <div class="card p-4">
+      <h5>Blog Growth</h5>
+      <canvas id="blogChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<script>
+/* Counter Animation */
+document.querySelectorAll(".counter").forEach(counter=>{
+  let target = +counter.getAttribute("data-target");
+  let count = 0;
+  let speed = target / 50;
+
+  let interval = setInterval(()=>{
+    count += speed;
+    if(count >= target){
+      counter.innerText = target;
+      clearInterval(interval);
+    } else {
+      counter.innerText = Math.floor(count);
+    }
+  },20);
+});
+
+/* Chart.js Graph */
+const ctx = document.getElementById('blogChart');
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan','Feb','Mar','Apr','May','Jun'],
+    datasets: [{
+      label: 'Blogs Created',
+      data: [2,5,8,12,20,30],
+      borderColor: '#3b82f6',
+      backgroundColor: 'rgba(59,130,246,0.2)',
+      tension: 0.4
+    }]
+  }
+});
+</script>

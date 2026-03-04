@@ -1,0 +1,32 @@
+<div class="sidebar p-4 text-white">
+
+    <h4 class="text-center mb-4 fw-bold">Blog Panel</h4>
+
+    <a href="/" class="nav-item"><i class="fa fa-home me-2"></i> Home</a>
+
+    <% if(user && user.role==="admin" ){ %>
+        <a href="/profile" class="nav-item"><i class="fa fa-user me-2"></i> Profile</a>
+        <a href="/admin/dashboard" class="nav-item"><i class="fa fa-chart-line me-2"></i> Dashboard</a>
+        <a href="/admin/users" class="nav-item"><i class="fa fa-users me-2"></i> Manage Users</a>
+        <a href="/blogs/admin/blogs" class="nav-item"><i class="fa fa-check-circle me-2"></i> Moderate Blogs</a>
+        <% } %>
+
+            <% if(user && user.role==="author" ){ %>
+                <a href="/profile" class="nav-item"><i class="fa fa-user me-2"></i> Profile</a>
+
+                <a href="/author/dashboard" class="nav-item"><i class="fa fa-pen me-2"></i> My Blogs</a>
+                <a href="/blogs/author/create" class="nav-item"><i class="fa fa-plus me-2"></i> Create Blog</a>
+                <% } %>
+
+                    <% if(user && user.role==="user" ){ %>
+                        <a href="/profile" class="nav-item"><i class="fa fa-user me-2"></i> Profile</a>
+                        <a href="/saved" class="nav-item"><i class="fa fa-heart me-2"></i> Saved Blogs</a>
+                        <% } %>
+
+                            <hr class="bg-light">
+
+                            <a href="/logout" class="nav-item text-danger">
+                                <i class="fa fa-sign-out-alt me-2"></i> Logout
+                            </a>
+
+</div>

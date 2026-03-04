@@ -1,0 +1,30 @@
+{
+  "name": "ass2_rac_otp_blog",
+  "version": "1.0.0",
+  "description": "Role-Based Authentication System with Email OTP Verification",
+  "license": "ISC",
+  "author": "Ankit Shaw",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "ejs": "^3.0.2",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.19.0",
+    "flash": "^1.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.2.1",
+    "nodemailer": "^8.0.1",
+    "nodemon": "^3.1.14"
+  }
+}
